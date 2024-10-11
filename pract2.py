@@ -1,8 +1,31 @@
 """
 Code for programing (M30299-2024/25) practical session number 1
 """
-from math import pi
+from math import pi, sqrt, radians, sin, cos
 
+
+def square_root_calculator():
+    """
+    Calculate square root of the number
+    """
+    num = float(input("Enter a non-negative number: "))
+    if num < 0:
+        print("Square root is undefined for negative numbers.")
+    else:
+        sqrt_value = sqrt(num)
+        print("Square root:", round(sqrt_value, 2))
+
+
+def sine_and_cosine():
+    """
+    Get Sine and Cosine of the angle
+    """
+    angle = float(input("Enter an angle in degrees: "))
+    angle_in_radians = radians(angle)  # converts degrees to radians
+    sine_value = sin(angle_in_radians)
+    cosine_value = cos(angle_in_radians)
+    print("Sine of the angle:", round(sine_value, 2))
+    print("Cosine of the angle:", round(cosine_value, 2))
 
 def speed_calculator():
     """
