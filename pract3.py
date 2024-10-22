@@ -1,5 +1,5 @@
+import math
 from graphix import Window, Point, Circle, Line, Rectangle, Polygon, Text, Entry
-
 
 def hello_graphix():
     win = Window()
@@ -272,4 +272,80 @@ def ten_coloured_rectangles():
     on the screen. The user should pick the coordinates of the top-left and bottom-right corners
     of every rectangle by clicking on the window.
     """
-    pass
+    win = Window("Ten Rectangles", 400, 400)
+
+    input_box = Entry(Point(200, 15), 10)
+    input_box.text = "blue"
+    input_box.draw(win)
+    
+    for _ in range(10):
+        p1 = win.get_mouse()
+        p2 = win.get_mouse()
+
+        rectangle = Rectangle(
+                Point(
+                    p1.x, p1.y),
+                Point(
+                    p2.x, p2.y)
+            )
+        
+        rectangle.fill_colour = input_box.text
+        rectangle.draw(win)
+        
+
+    win.get_mouse()
+
+
+def five_click_stick_figure():
+    """
+        [harder] Write a five_click_stick_figure function that allows the user to draw a (symmetric) stick figure
+        in a graphics window using five clicks of the mouse to determine the positions of its features,
+        as illustrated in the figure below. Each feature should be drawn as the user clicks the points. 
+    """
+    win = Window("five_click_stick_figure ", 400, 400)
+
+    head_center_point = win.get_mouse()
+    head_out_point = win.get_mouse()
+    radius = round(math.sqrt((head_out_point.x - head_center_point.x)**2 + (head_out_point.y - head_center_point.y)**2))
+    
+    head = Circle(Point(head_center_point.x, head_center_point.y), radius)
+    head.draw(win)
+
+    body_point = win.get_mouse()
+
+    body = Line(
+        Point(head_center_point.x, head_center_point.y + radius),
+        Point(head_center_point.x, body_point.y)
+    )
+    body.draw(win)
+
+    hand_point = win.get_mouse()
+    left_arm = Line(
+        Point(hand_point.x,
+        head_center_point.y + radius + 20),
+        Point(
+            head_center_point.x,
+            head_center_point.y + radius + 20
+        )
+    )
+        
+    # body = Line(Point(200, 160), Point(200, 240))
+    # body.draw(win)
+
+    # left_arm = Line(Point(200, 200), Point(260,170))
+    # left_arm.draw(win)
+
+    # right_arm = Line(Point(200, 200), Point(140,170))
+    # right_arm.draw(win)
+
+    # left_leg = Line(Point(200, 240), Point(175,290))
+    # left_leg.draw(win)
+
+
+    # right_leg = Line(Point(200, 240), Point(225,290))
+    # right_leg.draw(win)
+
+    win.get_mouse()
+
+
+draw_rectangle()
