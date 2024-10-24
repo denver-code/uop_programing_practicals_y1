@@ -346,6 +346,4 @@ def five_click_stick_figure():
     # right_leg.draw(win)
 
     win.get_mouse()
-
-
-draw_rectangle()
+    
